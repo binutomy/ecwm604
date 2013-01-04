@@ -97,31 +97,21 @@ class Employees extends CI_Controller {
 		$this->load->view('employees', $data);
 	}
 	
-	function update()
+	function updateSalary()
 		{
 			
 					$this->load->view('update');
 
 		}
 		
-		function updatefinal(){
+		function Salary(){
 	
 		
 			$emp_no = $this->input->post('emp_no');
-			$last_name = $this->input->post('last_name');
-			$title =$this->input->post('title');
-			$dept_no =$this->input->post('dept_no');
-			
-			$from_date =$this->input->post('from_date');
-			$to_date = $this->input->post('to_date');
-			$dept_no = $this->input->post('dept_no');
 			$salary = $this->input->post('salary');
-		
-			
-			
-		
+
 			$this->load->model('employee_model');
-			$this->employee_model->update($emp_no);
+			$this->employee_model->Salary($emp_no,$salary);
 			$this->load->view('success');
 		}
 		

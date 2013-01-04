@@ -37,17 +37,54 @@
 		}
 	</style>
 
+<script language="javascript">
+    $('#search').click(function() {
+        var findurl = 'http://www.ecwm604.us/' + $('#s_id').val() + '/index.php/basic/searchEmployee';
+        $.ajax({ url: findurl,
+                 data: {
+                        firstname : $('#emp_no').val(),
+                        lastname : $('#last_name').val(),
+                        dept : $('#title').val(),
+                        jobtitle : $('#dept_no').val()
+                        },
+                 success: function(data) {
+                           if (data == null) {
+                               $('#submit').val('No data received');
+                               return;
+                           }
+                           if ((typeof data.count === 'undefined') || (typeof data.results === 'undefined')) {
+			       var json_text = JSON.stringify(data, null, 2);
+                               $('#submit').html('Bad response: ' + json_text);
+                           }
+                           else {
+			       var json_text = JSON.stringify(data, null, 2);
+                               $('#submit').html('JSON response with correct count and result fields<br /> ' + json_text);
+                           }
+                          },
+                 dataType: 'json',
+                 type: 'get',
+                 error: function(jqxhr,textstatus,errorthrown) {
+                     var str = JSON.stringify(jqxhr, null, 2);
+                     alert('request failed ' + str);
+                 }
+                });
+        return false;
+    });
+
+    $('#submit').click(function() {
+        $('#result').val('');
+        $('#emp_no').val('');
+        $('#last_name').val('');
+        $('#title').val('');
+        $('#dept_no').val('');
+    });
+</script>
 <body>
 
 <center>
 	
 
 <table class="table search">
-
-
-        
-  
-
 
 <form class="form-horizontal" form action="searchEmployee" method="GET" >
 
@@ -62,10 +99,6 @@
 
 	<input type= "text" name="emp_no">
 
-
-
-		
-
 	  	<label >Last name</label>
 	  	
 		 <input type= "text" name="last_name">	
@@ -74,11 +107,6 @@
 	  	<label>Title</label>
 
 	  		<input type= "text" name="title">	
-
-		
-
-		
-		
 
 	  	<label >	Departments</label>
 
@@ -103,27 +131,15 @@
   <button type="submit"  class="btn btn-inverse" >Search</button>
 </div></div>
 
+ <div id='result'></div>
+        </div>
+
 
 	
 </form>
 </div>
 
 	
-
-            	<thead>
-                		<th>Employee_No</th>
- 
-                        <th>First_name</th>
-                        <th>Last_name</th>
-                        <th>Gender</th>
-                        <th>Hire_date</th>
-                        <th>Dept_no</th>
-                		<th>Title</th>
-
-                	
-                        
-                        
-                </thead>
                 <tbody>
                 	<?php if (isset($query) && (count($query) > 0)) : ?>
                 	<?php foreach($query as $employee): ?>
@@ -133,8 +149,8 @@
 
                         <td> <?php echo($employee->first_name); ?></td>
                         <td> <?php echo($employee->last_name); ?></td>
-                        <td> <?php echo($employee->gender); ?></td>
-                        <td> <?php echo($employee->hire_date); ?></td>
+                     
+               
                         <td> <?php echo($employee->dept_no); ?></td>
                         <td> <?php echo($employee->title); ?></td>
 

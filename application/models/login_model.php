@@ -17,7 +17,7 @@ class Login_model extends CI_Model{
         $this->db->where('Password', $pass);
         // Run the query
 		$query = $this->db->get('users');
-		var_dump($pass);
+		
         // Let's check if there are any results
         if($query->num_rows == 1)
         {

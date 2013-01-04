@@ -24,11 +24,12 @@
             <span class="icon-bar"></span>
           </a>
        
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-            	 <li class=""><a href="searchEmployee">Home</a></li>
-              <li class=""><a href="add">Add Employee</a></li>
+
+            <ul>
+            	 <li><a href="searchEmployee">Home</a></li>
+              <li ><a href="add">Add Employee</a></li>
               <li><a href="delete">Delete Employee</a></li>
+               <li><a href="updateSalary"> Salary</a></li
               
             </ul>
             <form class="navbar-form pull-right" form action="logout">
@@ -38,7 +39,7 @@
 
               
             </form>
-          </div><!--/.nav-collapse -->
+
         </div>
       </div>
     </div>

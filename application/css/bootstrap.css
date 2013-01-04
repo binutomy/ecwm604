@@ -3545,6 +3545,11 @@ input[type="submit"].btn.btn-mini {
   -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
   box-shadow: 0 -1px 10px rgba(0,0,0,.1);
 }
+.navbar ul {
+	
+	
+	
+}
 .navbar .nav {
   position: relative;
   left: 0;

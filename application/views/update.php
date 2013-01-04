@@ -14,11 +14,11 @@
 <body>
 		<center>
 			<div class="hero-unit">
-		<legend>Update</legend>
+		<legend>Update Salary</legend>
 
 			
 		
-		<form class="form-horizontal" form action="updatefinal" method="POST">
+		<form class="form-horizontal" form action="Salary" method="POST">
 
 		 
 				 <div class="control-group">
@@ -26,64 +26,8 @@
 	  	<div class="controls"> 
 			 <input type="text" id="emp_no" name="emp_no" value=""/>
 		   </div></div>
-		 
-		
-			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Birth Date</label>
-	  	<div class="controls"> 
-		 <input type="text" id="birth_date" name="birth_date" value=""/>
-			  </div></div>
-			
-			
-			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> First Name</label>
-	  	<div class="controls"> 
-			 <input type="text" id="first_name" name="first_name" value=""/>
-			    </div></div>
-			  
-			  
-				 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Second Name  </label>
-	  	<div class="controls"> 
-			  <input type="text" id="last_name" name="last_name" value=""/> 
-			       </div></div>			    
-			    
-			   			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Gender </label>
-	  	<div class="controls"> 
-			   <input type="text" id="gender" name="gender" value=""/> 
-			       </div></div>
-			    
-			 
-			  <div class="control-group">
-    <label class="control-label" for="inputEmail">Hire date</label>
-	  	<div class="controls"> 
-			     <input type="text" id="hire_date" name="hire_date" value=""/>
-			       </div></div>
-			    
-			    
-			    
-			    			 
-			  <div class="control-group">
-    <label class="control-label" for="inputEmail">From Date</label>
-	  	<div class="controls"> 
-			     <input type="text" id="hire_date" name="fire_date" value=""/>
-			       </div></div>
-			    
-			    
-			    <div class="control-group">
-    <label class="control-label" for="inputEmail">To Date</label>
-	  	<div class="controls"> 
-			    <input type="text" id="to_date" name="to_date" value=""/>
-			       </div></div>
-			       
-			  <div class="control-group">
-    <label class="control-label" for="inputEmail">  Department </label>
-	  	<div class="controls"> 
-			  <input type="text" id="dept_no" name="dept_no" value=""/>
-			    </div></div>
-			    
-			    
+
+
 			  <div class="control-group">
     <label class="control-label" for="inputEmail"> Salary</label>
 	  	<div class="controls"> 

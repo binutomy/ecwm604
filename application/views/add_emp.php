@@ -67,7 +67,7 @@
 			  <div class="control-group">
     <label class="control-label" for="inputEmail">From Date</label>
 	  	<div class="controls"> 
-			     <input type="text" id="hire_date" name="fire_date" value=""/>
+			     <input type="text" id="from_date" name="from_date" value=""/>
 			       </div></div>
 			    
 			    
