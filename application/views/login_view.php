@@ -4,7 +4,7 @@
 
 
     <div id='login_form'>
-        <form action='<?php echo base_url();?>login/Process' method='post' name='process'>
+        <form action='<?php echo base_url('login/Process');?>' method='post' name='process'>
             <h2>User Login</h2>
             <br />            
             <label for='username'>Username</label>
@@ -17,7 +17,10 @@
             <input type='Submit' value='Login' />            
         </form>
         <center>
-        <a href="/codeigniter/index.php/Basic/searchEmployee">Search</a><br /> 
+        	
+        	
+        	
+        <a href='<?php echo base_url('basic/searchEmployee');?>'>Search</a><br /> 
         </center>
     </div>
 </body>
