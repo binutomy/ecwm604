@@ -47,11 +47,7 @@
 	
 </script>
 
-<?php 
-if(isset ($data)){
-echo json_encode($data); 
-}
-?>
+
 
 <body>
 

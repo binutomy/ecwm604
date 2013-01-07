@@ -79,6 +79,8 @@ class Employees extends CI_Controller {
 
 	function searchEmployee(){
 
+
+
 		$limit =100;
 		$emp_no = $this->input->get('emp_no');
 		$last_name = $this->input->get('last_name');

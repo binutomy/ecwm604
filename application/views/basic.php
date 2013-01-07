@@ -126,7 +126,7 @@
 <div class="hero-unit">
 	
 	
-	      <h3><a href="/codeigniter/index.php/login">Login</a></h3>
+	      <h3><a href='<?php echo base_url('index.php/login/Process');?>'>Login</a></h3>
 
 	 <legend>Enter Your Search</legend>
 
