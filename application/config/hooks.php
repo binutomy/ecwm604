@@ -7,8 +7,12 @@
 | files.  Please see the user guide for info:
 |
 |	http://codeigniter.com/user_guide/general/hooks.html
-|
-
+|*/
+$hook['post_controller_constructor'][] = array(
+                                'function' => 'check_ssl',
+                                'filename' => 'ssl.php',
+                                'filepath' => 'hooks'
+                                );
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

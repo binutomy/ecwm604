@@ -9,10 +9,54 @@
 	<meta charset="UTF-8">
 
 
-	<link rel="stylesheet" type="text/css" href="/codeigniter/css/css.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/css/css.css" media="screen" />
 </head>
 
+<script>
+	$(document).ready(function(){
+	$('#search_results').click(function(e) {
+		e.preventDefault();
+		var querystring = "basic/searchEmployee?";
+		if ($('#emp_no').val() != ''){
+			querystring += "emp_no=" + $('#emp_no').val();
+		}
+		if ($('#last_name').val() != ''){
+			querystring += "&last_name=" + $('#last_name').val();
+		}
+		if ($('#dept_no').val() != ''){
+			querystring += "&dept_no=" + $('#dept_no').val();
+		}
+		if ($('#title').val() != ''){
+			querystring += "&title=" + $('#title').val();
+		}
+		$.getJSON(querystring,
+			null,
+			function(data){
+			$.each(data, function() {
+				$.each(this, function(i, item) {
+					$('.search_results tbody').append(
+					'<tr>' +
+					'<td>' + item.emp_no + '</td>' +
+					'<td>' + item.last_name + '</td>' +
+					'<td>' + item.dept_no + '</td>' +
+					'<td>' + item.title + '</td>' +
+					'</tr>'
+					);
+				});
+			});
+		});
+	});
+});
+	
+	
+</script>
+
+
 <style>
+		body{
+			background-color:white;
+		}
+		
 		* {
 			font-family: Arial;
 			font-size: 12px;
@@ -35,49 +79,40 @@
 		.search tr:nth-child(odd) {
 			background:#C4B0B7;
 		}
+		
+			.navbar ul { 
+			margin: 0; 
+			padding: 10px; 
+			list-style-type: none; 
+			text-align: center; 
+			background-color: #000;
+			font-family: sans-serif; 
+			} 
+			
+			.navbar ul li { 
+			display: inline;
+			font-family: sans-serif; 
+			} 
+			
+			.navbar ul li a { 
+			text-decoration: none; 
+			padding: .2em 5em; 
+			color: #fff; 
+			background-color: #000;
+			font-family: sans-serif; 
+			} 
+			
+			.navbar ul li a:hover { 
+			color: #000; 
+			background-color: #fff;
+			font-family: sans-serif; 
+			}
+					
+					
 	</style>
 
 <script language="javascript">
-    $('#search').click(function() {
-        var findurl = 'http://www.ecwm604.us/' + $('#s_id').val() + '/index.php/basic/searchEmployee';
-        $.ajax({ url: findurl,
-                 data: {
-                        firstname : $('#emp_no').val(),
-                        lastname : $('#last_name').val(),
-                        dept : $('#title').val(),
-                        jobtitle : $('#dept_no').val()
-                        },
-                 success: function(data) {
-                           if (data == null) {
-                               $('#submit').val('No data received');
-                               return;
-                           }
-                           if ((typeof data.count === 'undefined') || (typeof data.results === 'undefined')) {
-			       var json_text = JSON.stringify(data, null, 2);
-                               $('#submit').html('Bad response: ' + json_text);
-                           }
-                           else {
-			       var json_text = JSON.stringify(data, null, 2);
-                               $('#submit').html('JSON response with correct count and result fields<br /> ' + json_text);
-                           }
-                          },
-                 dataType: 'json',
-                 type: 'get',
-                 error: function(jqxhr,textstatus,errorthrown) {
-                     var str = JSON.stringify(jqxhr, null, 2);
-                     alert('request failed ' + str);
-                 }
-                });
-        return false;
-    });
 
-    $('#submit').click(function() {
-        $('#result').val('');
-        $('#emp_no').val('');
-        $('#last_name').val('');
-        $('#title').val('');
-        $('#dept_no').val('');
-    });
 </script>
 <body>
 
@@ -86,7 +121,7 @@
 
 <table class="table search">
 
-<form class="form-horizontal" form action="searchEmployee" method="GET" >
+<form class="form-horizontal" form action="findemp" method="GET" >
 
 <div class="hero-unit">
 	
@@ -97,20 +132,26 @@
 
 	  	<label >Employee No</label>
 
-	<input type= "text" name="emp_no">
+	<input type= "text" id= "title" name="emp_no">
+
+	  	<label >First name</label>
+	  	
+		 <input type= "text" name="firstname">	
+
+<br />
 
 	  	<label >Last name</label>
 	  	
-		 <input type= "text" name="last_name">	
+		 <input type= "text" name="lastname">	
 
 <br />
 	  	<label>Title</label>
 
-	  		<input type= "text" name="title">	
+	  		<input type= "text" name="jobtitle">	
 
 	  	<label >	Departments</label>
 
-	<select name="dept_no">
+	<select name="dept">
 	
 <option value="d009" selected="d009">Customer Service</option>
 <option value="d005" selected="d005">Development</option>
@@ -138,8 +179,26 @@
 	
 </form>
 </div>
-
+<?php 
+if(isset ($data)){
+echo json_encode($data); 
+}
+?>
+		
 	
+
+		<thead>
+                		<th>Employee_No</th>
+ 
+                        <th>First_name</th>
+                        <th>Last_name</th>
+                        <th>Title</th>
+
+                        <th>Department</th>
+                		
+                    
+                        
+                </thead>
                 <tbody>
                 	<?php if (isset($query) && (count($query) > 0)) : ?>
                 	<?php foreach($query as $employee): ?>
@@ -147,13 +206,12 @@
                     <tr>
                     	<td> <?php echo($employee->emp_no); ?></td>
 
-                        <td> <?php echo($employee->first_name); ?></td>
-                        <td> <?php echo($employee->last_name); ?></td>
-                     
-               
-                        <td> <?php echo($employee->dept_no); ?></td>
+                        <td> <?php echo($employee->firstname); ?></td>
+                        <td> <?php echo($employee->lastname); ?></td>
                         <td> <?php echo($employee->title); ?></td>
-
+              
+                        <td> <?php echo($employee->dept); ?></td>
+                        
                         
                         
                     </tr>   
@@ -161,6 +219,7 @@
 					<?php endif;?>
                 </tbody>
                 
+
                 </table>
 </center>
 

@@ -9,16 +9,16 @@
 	<meta charset="UTF-8">
 
 
-	<link rel="stylesheet" type="text/css" href="/css/css.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/codeigniter/css/css.css" media="screen" />
 </head>
 <body>
 		<center>
 			<div class="hero-unit">
-		<legend>Add Employee</legend>
+		<legend>Promote Employee</legend>
 
 			
 		
-		<form class="form-horizontal" form action="addfinal" method="POST">
+		<form class="form-horizontal" form action="promoteManager" method="POST">
 
 		 
 				 <div class="control-group">
@@ -26,58 +26,23 @@
 	  	<div class="controls"> 
 			 <input type="text" id="emp_no" name="emp_no" value=""/>
 		   </div></div>
-		 
-		
-			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Birth Date</label>
-	  	<div class="controls"> 
-		 <input type="text" id="birth_date" name="birth_date" value=""/>
-			  </div></div>
-			
-			
-			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> First Name</label>
-	  	<div class="controls"> 
-			 <input type="text" id="first_name" name="first_name" value=""/>
-			    </div></div>
-			  
-			  
-				 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Second Name  </label>
-	  	<div class="controls"> 
-			  <input type="text" id="last_name" name="last_name" value=""/> 
-			       </div></div>			    
-			    
-			   			 <div class="control-group">
-    <label class="control-label" for="inputEmail"> Gender </label>
-	  	<div class="controls"> 
-			   <input type="text" id="gender" name="gender" value=""/> 
-			       </div></div>
-			    
-			 
+
+
 			  <div class="control-group">
-    <label class="control-label" for="inputEmail">Hire date</label>
-	  	<div class="controls"> 
-			     <input type="text" id="hire_date" name="hire_date" value=""/>
-			       </div></div>
-			    
-			    
-			    
-			    			 
-			  <div class="control-group">
-    <label class="control-label" for="inputEmail">From Date</label>
+    <label class="control-label" for="inputEmail">From date</label>
 	  	<div class="controls"> 
 			     <input type="text" id="from_date" name="from_date" value=""/>
 			       </div></div>
-			    
-			    
+
+
 			    <div class="control-group">
     <label class="control-label" for="inputEmail">To Date</label>
 	  	<div class="controls"> 
 			    <input type="text" id="to_date" name="to_date" value=""/>
 			       </div></div>
+
 			       
-			  <div class="control-group">
+			 <div class="control-group">
     <label class="control-label" for="inputEmail">  Department </label>
 	  	<div class="controls"> 
 			  <select name="dept_no">
@@ -95,18 +60,12 @@
 			    </div></div>
 			    
 			    
-			  <div class="control-group">
-    <label class="control-label" for="inputEmail"> Salary</label>
-	  	<div class="controls"> 
-			    <input type="text" id="salary" name="salary" value=""/>
-			    </div></div>
-			    
+			
 			    
   <div class="control-group">
 	  	<div class="controls"> 
-  <button type="submit"  class="btn btn-inverse" >Add</button>	
+  <button type="submit"  class="btn btn-inverse" >Promote</button>	
 </div></div>
-			    
 			    
 
 		              

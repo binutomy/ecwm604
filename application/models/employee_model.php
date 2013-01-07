@@ -128,72 +128,57 @@ class Employee_model extends CI_Model {
 			
 		}
 
-			 function Salary($salary,$emp_no)
+			function Salary($emp_no,$salary)
 			{
-			       $data = array(
-			              'salary' => $salary,
-			              'emp_no' => $emp_no
-			              
-			           );
-			                       $this->db->where('emp_no', $emp_no);
-			                       $this->db->update('salaries', $data); 
+			       
+									$this->db->set('salary', $salary);
+			                      $this->db->where('emp_no', $emp_no);
+								   $query= $this->db->update('salaries');
+								   
+			                      
+			                                       
+			}
+			function Title($emp_no,$title)
+			{
+			       
+									$this->db->set('title', $title);
+			                      $this->db->where('emp_no', $emp_no);
+								   $query= $this->db->update('titles');
+								   
+			                      
 			                                       
 			}
 
-
-
-
-		/**function update($emp_no,$birth_date,$first_name,$last_name,$gender,$hire_date,$to_date,$dept_no,$salary,$dept_emp,$from_date,$to_date){
-		
-		
-		
-		
-		$data = array(
-	               'emp_no' => $emp_no,
-	               'first_name' => $first_name,
-	                 'last_name' => $last_name,
-	                   'gender' => $gender,
-	               'hire_date' => $hire_date
-	                );
-	
-				$this->db->where('emp_no', $emp_no);
-				$this->db->update('employees', $data);
-			
-		
-		
-		}**/
-
-
-		  function promote($empno,$dept_no,$hire_date,$to_date)
+		  function promote($dept_no,$emp_no,$from_date,$to_date)
 		{
 		       
 		               //Add employee details into the dept_manager table
-		               $this->db->set('emp_no', $empno);
+		               $this->db->set('emp_no', $emp_no);
 		               $this->db->set('dept_no', $dept_no);
-		               $this->db->set('from_date', $hire_date);
+		               $this->db->set('from_date', $from_date);
 		               $this->db->set('to_date', $to_date);
 		               $query= $this->db->insert('dept_manager');
 		               
 		}
-			function demote($empno)
+			function demote($emp_no)
 		{
 		       
 		               //delete employee from dept_manager table
-		           $this->db->delete('dept_manager', array('emp_no' => $empno));         
+		           $this->db->delete('dept_manager', array('emp_no' => $emp_no));         
 		               
 		}
 				
 				
-		function move($empno,$dept_no)
+		function move($emp_no,$dept_no)
 		{
 		       
 		 $data = array(
 		       
-		  'emp_no' => $empno,
+		  'emp_no' => $emp_no,
 		  'dept_no' => $dept_no,
 		              
 		 );
-		   $this->db->where('emp_no', $empno);
+		   $this->db->where('emp_no', $emp_no);
 		 $this->db->update('dept_emp', $data); 
                                        
                

@@ -5,7 +5,7 @@ class Employees extends CI_Controller {
 		parent::__construct();
 		$this->load->model('employee_model');
 		$this->check_isvalidated();
-		
+		$this->load->helper('url');
     }
 	
 	
@@ -79,8 +79,6 @@ class Employees extends CI_Controller {
 
 	function searchEmployee(){
 
-
-
 		$limit =100;
 		$emp_no = $this->input->get('emp_no');
 		$last_name = $this->input->get('last_name');
@@ -100,7 +98,7 @@ class Employees extends CI_Controller {
 	function updateSalary()
 		{
 			
-					$this->load->view('update');
+					$this->load->view('updateSalary');
 
 		}
 		
@@ -115,7 +113,83 @@ class Employees extends CI_Controller {
 			$this->load->view('success');
 		}
 		
+		function updatejobtitle()
+		{
+			
+					$this->load->view('updatejobtitle');
+
+		}
+		
+		
+	function Title(){
 	
+		
+			$emp_no = $this->input->post('emp_no');
+			$title = $this->input->post('title');
+
+			$this->load->model('employee_model');
+			$this->employee_model->Title($emp_no,$title);
+			$this->load->view('success');
+		}
+		
+		function promote()
+		{
+			
+					$this->load->view('promote');
+
+		}
+		
+		
+	function promoteManager(){
+	
+		$dept_no = $this->input->post('dept_no');
+			$emp_no = $this->input->post('emp_no');
+		$from_date =$this->input->post('from_date');
+		$to_date = $this->input->post('to_date');
+		
+		
+		
+
+			$this->load->model('employee_model');
+			$this->employee_model->promote($dept_no,$emp_no,$from_date,$to_date);
+			$this->load->view('success');
+		}
+		
+		function demote()
+		{
+			
+					$this->load->view('demote');
+
+		}
+		
+		
+	function demoteManager(){
+	
+	
+			$emp_no = $this->input->post('emp_no');
+		$this->load->model('employee_model');
+			$this->employee_model->demote($emp_no);
+			$this->load->view('success');
+		}
+	
+	function move()
+		{
+			
+					$this->load->view('move');
+
+		}
+		
+		
+	function movedepartments(){
+	
+	
+			$emp_no = $this->input->post('emp_no');
+			$dept_no = $this->input->post('dept_no');
+			
+		$this->load->model('employee_model');
+			$this->employee_model->move($emp_no,$dept_no);
+			$this->load->view('success');
+		}
 	
 
 }
